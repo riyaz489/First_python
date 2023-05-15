@@ -1,0 +1,12 @@
+
+
+# Fermi estimation: to roughly estimate anything
+1. write all the equations we know and needed for given problem.
+2. always take assumption in power of 10.
+3. always have some reason for given assumption. example apple users are 1/3 because android dominant the market,
+    so their users will be 2/3.
+4. always do numerical comparisons.
+5. if you don't have any assumption for current object then use whatever u know and try to make relation with that.
+   for example if I can't estimate population of up, because I don't have any idea. but I do know population of uttarakhand.
+   which is around 10 million, and we know up is greater than uttarakhand in area, also UP is very dense in compare to UK
+   means in small areas lot of people are living. so we can say it's population will be around 1 billion.

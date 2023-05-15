@@ -1,0 +1,100 @@
+
+# pre-commit install: to install pre commit script in git
+# pre-commit uninstall: to remove pre commit script in git
+# git commit --no-verify -m "commit message": to skip pre commit
+# pre-commit: to run all scripts over code without committing it
+
+repos:
+
+  # local means we can pass commands which we can run locally
+- repo: local
+  hooks:
+  - id: bandit
+    name: bandit
+    # here we put the command
+    entry: bandit
+    # args for above command , here . is folder where run bandit
+    args: [--skip, "B301",  -t, "B101,B102,B104,B105,B106,B107,B108"]
+    language: system
+    # tell on which types fo files we need to run pre-commit
+    types: [python]
+    # if it is false then it will automatically run over all files
+    # otherwise it will pass staged(changed) filenames to above entry command as argument
+#    pass_filenames: false
+#
+# to run custom bash script
+#  - id: inline-pylint-with-bash
+#    name: inline-pylint-with-bash
+#    entry: bash -c 'lines=$(pylint api/ | wc -l) && (( lines > 10)) && exit 1'
+#    language: system
+#    types: [python]
+#    pass_filenames: false
+
+# to run custom bash script present in different file
+#  - id: custom-script-file
+#    name: custom-script-file
+#    entry: relative/path/to/repo/root/check_pylint.sh
+#    language: script
+#    types: [python]
+#    pass_filenames: false
+
+# code from git repo
+#-   repo: https://github.com/PyCQA/flake8
+#    rev: 4.0.1
+#    hooks:
+#    -   id: flake8
+#-   repo: https://github.com/psf/black
+#    rev: 22.6.0
+#    hooks:
+#    -   id: black
+#        args: [--line-length=79]
+
+
+
+# to run code present in git repo, code on git should have .pre-commit-hooks.yaml file
+# sample .pre-commit-hooks.yaml file
+#-   id: mypy
+#    name: mypy
+#    description: ''
+#    entry: mypy
+#    language: python
+#    'types_or': [python, pyi]
+#    args: ["--ignore-missing-imports", "--scripts-are-modules"]
+
+  # in case of false it will run hook entry command on multiple code files, in parallel, to speedup the process
+#    require_serial: true
+#    additional_dependencies: []
+#    minimum_pre_commit_version: '2.9.2'
+
+# flake 8 .pre-commit-hooks.yaml file
+#-   id: flake8
+#    name: flake8
+#    description: '`flake8` is a command-line utility for enforcing style consistency across Python projects.'
+#    entry: flake8
+#    language: python
+#    types: [python]
+#    require_serial: true
+
+#supported prehooks : https://pre-commit.com/hooks.html
+
+
+
+
+-   repo: local
+    hooks:
+    -   id: pytest
+        name: pytest
+        stages: [commit]
+        language: system
+        entry: pytest -v --showlocals
+        types: [python]
+        pass_filenames: true
+    -   id: coverage
+        name: coverage
+        stages: [commit]
+        language: system
+        entry: coverage report -m
+        types: [python]
+        pass_filenames: true
+
+
