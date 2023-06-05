@@ -10,6 +10,11 @@ print((lambda x, y: x + y)(5, 3))
 # lambda without return
 (lambda: print('yo'))()
 
+# recursion with lambda
+x = lambda y: x(y-1) if y else y
+print(x(4))
+
+
 # map: to execute a function to all elements of a iterable. map return a new iterable.
 s = list(map(lambda x: x**x, [1,2,3]))
 print(s)
