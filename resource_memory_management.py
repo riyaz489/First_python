@@ -21,7 +21,8 @@ id(a)
 # on the function call stack, where it is deleted once the function returns.
 
 #heap
-# The variables are needed outside of method or function calls or are shared within multiple functions globally are stored in Heap memory.
+# The variables are needed outside of method or function calls or are shared within multiple
+# functions globally are stored in Heap memory.
 
 
 # in python small strings use same memory i.e

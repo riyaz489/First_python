@@ -1,0 +1,67 @@
+to compare order of growth of  algos:
+so, if   lim n->infinity   f(n)/g(n) = infinity
+or lim n-> infinity    g(n)/f(n) = 0.
+it means f(n) order of growth is higher than g(n)
+
+#Big O (upper bound)
+
+O(g(n)) =  {f(n) there exist positive constants c and n0
+            such that 0 ≤ f(n) ≤ cg(n) for all n ≥ n0 }
+ if f(n)=O(g(n))
+then f(n) <=cg(n)
+
+#little o is little rough estimate, for example:
+f(n) = n+2, can be o(n^2)
+
+
+#omega (lower bound)
+Ω(g(n)) = { f(n): there exist positive constants c and n0
+            such that 0 ≤ cg(n) ≤ f(n) for all n ≥ n0 }
+
+if f(n)= Ω(g(n))
+then 0<=cg(n) <=f(n)
+
+
+#Theta notation
+Θ(g(n)) = { f(n): there exist positive constants c1, c2 and n0
+            such that 0 ≤ c1g(n) ≤ f(n) ≤ c2g(n) for all n ≥ n0 }
+if Θ(g(n)) =  f(n)
+then 0<=c1g(n)<=f(n)<=c2g(n)
+
+
+## relations between notations:
+
+1. if f(n)= Ω(g(n)) then g(n) = O(f(n))
+2. if f(n)=Θ(g(n)) then f(n) = O(g(n)) and f(n) = Ω(g(n)) and g(n) = O(f(n)) and g(n) = Ω(f(n))
+
+## complexity of loops
+1. i=i+c or i=i-c => Θ(n)
+2. i=i/c or i=i*c => Θ(logn)
+3. i=i^c => Θ(loglogn)
+4. loop inside loop => Θ(n^2)
+
+# find all permutation -> n!
+# find all subsets-> 2^n
+
+
+# time complexity in increasing order Constant: O(1)
+Linear time: O(n)
+Logarithmic time: O(n log n)
+Quadratic time: O(n^2)
+Exponential time: O(2^n)
+Factorial time: O(n!)
+
+# O(2^N) runtime complexities are often seen in recursive functions that make 2 recursive calls and pass in
+the problem size of N-1. for example fibonacci series with recursive approach.
+
+# auxilary space -> memory required for computation in a function, rather than input.
+
+def arrsum(arr,n):
+    int sum=0
+    for i in range(n):
+        sum=sum+arr[i]
+    return sum
+
+Auxilary space =1; total space = n
+
+size of each char in python is 1 byte

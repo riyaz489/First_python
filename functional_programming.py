@@ -196,7 +196,7 @@ x = wrapper(lambda x: x*2)
 # a monad-value is boxed value which contains value with context.
 # it makes functions composition easier.
 
-# monad takes warapped values as input then its bind() functions unwraps value and and apply function then wraps result
+# monad takes wrapped values as input then its bind() functions unwraps value and apply function then wraps result
 # again
 
 # so in bind function we can add glue code (which is called between invocations of functions).

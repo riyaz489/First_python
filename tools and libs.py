@@ -16,3 +16,7 @@
 # liquibse for db-migrations,
 
 # #### all cloud native tools and application for development and deployment : https://landscape.cncf.io/   #######
+
+
+# trivy and twistlock are tools for vulnerability scanning in host settings, configuration, libraries and docker images
+# in kubernetes environment.

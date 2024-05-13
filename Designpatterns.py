@@ -222,6 +222,8 @@ v1.private_dummy()
 
 # b. structural design patterns: these patterns explains how to assemble objects and classes into large structures
 # while keeping these structures flexible and efficient.
+# The structural design patterns simplifies the structure by identifying the relationships.
+# These patterns focus on, how the classes inherit from each other and how they are composed from other classes.
 
 # 1. Adapter: it is used in scenarios like we have a third party lib which is not compatible with our code
 # so instead of updating lib code,  we introduce a adapter class between third party lib and our our code.
@@ -322,7 +324,8 @@ military1.add_objects(25)
 military1.display_description()
 
 # 3. composite: consider if we have to write code to access files inside folders, in this case we have to create so many
-# classes also call each class object one by on to reach there. instead we can use tree structure to solve this problem
+# classes also call each class object one by on to reach there. instead we can use tree structure to solve this problem.
+# composite describes a group of objects that are treated the same way as a single instance of the same type of object.
 # here we have 2 elements:
 # 1. Component: this interface describes operations that are common to both simple and complex elements of the tree.
 # 2. leaf: The Leaf is a basic element of a tree that doesn’t have sub-elements.
@@ -551,6 +554,7 @@ p.request()
 # providing extensibility, flexibility, and isolation to our application features.
 # so basically core system is generic type of code, which can easily accepts new plugins without any code modification.
 # to make it more flexible we can read, plugins list from some external json file.
+# for any new plugin simply add import path to json file.
 # example:
 import importlib
 
@@ -647,7 +651,13 @@ if __name__ == '__main__':
 # the request to command class, then receiver will fetch request from command class objects.
 # In this design pattern, client creates a command object that includes a list of commands to be executed.
 # it will be useful if we  want to queue operations, schedule their execution, or execute them remotely.
-# or we want to undo or record certain operations.
+# or we want to undo or record certain operations or we can use it when we have similar commands for different classes.
+# here receiver interface will contain all command methods then our actual command classes will implement it.
+# then we will be having command class for each command which takes receiver object as argument and calls receiver
+# command function. and invoker class will register commands and call execute function, which eventually calls,
+# commands classes execute which then calls receiver class sepecifc method.
+
+
 # example:
 from __future__ import annotations
 from abc import ABC, abstractmethod
@@ -781,6 +791,8 @@ if __name__ == "__main__":
 # communicate with mediator instead of original one, so that we can easily modify original class. and others
 # class can also use it as long as they support mediator class object.
 # drawback of mediator, it will lead to god class.
+# it basically restrict 2 low level objects communication directly.where commands restrict direct high level client
+# to low level object communication.
 
 # in facade we combine different methods and objects to provide simple interface to client code, so on the basis of
 # request facades decides which methods to call. but in case mediator we are not changing functionality,

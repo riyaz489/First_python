@@ -1,0 +1,96 @@
+What t ask before start solving problem
+1) what is the datatype of input (int, float etc)
+2) what is limit of input
+3) how input is distributed
+4) are there any duplicates
+5) how much memory is available (in low memory case read data in chunks and do parallel processing on chunks if possible)
+6) constraints and edge cases.
+
+
+## sliding window:
+in sliding window technique,
+
+## pre-calculation/pre-processing:
+this technique is used to reduce runtime complexity of some algorightms, here we do some calculations in advance, which is ging to be used later.
+if we take example of tapping water algo,There we are storing left most and right most max elem intially,
+because if we find left most and right most inside loop where we are calculating water storing area,
+then our solution become n^2. so to avoid that we precalculated it and our solution become n.
+
+## prefix sum:
+we create a list which contains sum of prefix elements
+for example: [1,2,3] will be [1,3,6], then now if want to get sum of elements of any subset of [1,2,3] we can simply use below formula
+to get output in o(1); sum of subsets from i to j elements will be = prefix_sum[j] - prefix_sum[i-1]
+
+## kadane algo:
+this algo is used to find subset with max at index i.
+formula  = max(max_sum_so_far{or max_sum_before_index_i}, max_sum_so_far+i)
+
+## backtracking:
+In this approach we usually try to find out all permutations and combinations to get correct results.
+we will traverse each path possible and find out if we can fetch result following same if not then we will change the path
+it is usually implemented by recursion.
+
+##sample problem: sum of subsets equal to k
+
+So here in our recursion tree every node have 2 branches : in one branch we will include current element and in another branch
+we will not current element. basically it will create all subsets.
+but here to optimize we will stop expanding current branch of tree as soon as we found out that current sum is grater than required values.
+and move to another branch to find result.
+
+[1,2,3,]; k=1
+
+                     []
+            /                  \
+          []                   [1]                                                                 <- 1 (include/exclude)
+         / \                /      \
+       []     [2] X       [1]     [1,2] X  (greater than 1 so we stop tree generation here)          <-2
+       / \               /\
+      [] [3] X         [1] [1,3]X                                                                    <-  3
+
+In worst case its complexity will be 2^n (as each node has 2 decisions and height of tree will be n)
+
+## another sample problem: find if given set can be divide in k sets where sum of each subset is equal.
+example: [1,2, 5,4,3], k=3; result -> [5], [2,3], [1,4]
+So here we need to find k specific sets. and again to find k specific sets we have to see all permutations possible.
+
+In this case we will create k empty arrays and here we will make k decisions (instead of 2, like we did above)
+in each subtree we will try to fix current element to a specific array, like in first decision, current elem will be
+only added to first array, then in second branch it will be only added to second array and so on.
+let say k = 3
+                                    [][][]
+                  /                    |         \
+                [1][][]            [][1][]   [][][1]
+         /     |         \
+     [1,2][][] [1][2][]  [1][][2]     :         :
+       :        :          :
+
+again to optimize it we will stop tree where our current set not match required result. and
+we can add DP(we can simply use @cache decorator from functool to store result of function call ) also to avoid recalculations.
+here  complexity will be k^n as we have k branches for each node and tree height will be n.
+
+So whenever we have to find possibility of having specific k elements, then can use above algo.
+but its time complexity is very high, even after DP and early return conditions.
+
+code:
+
+def dfs(self, parts, nums, idx):
+        if idx == len(nums):
+        # if sum of all parts is 0, then it means we find all required subset
+            return not sum(parts)
+        for i in range(len(parts)):
+            if parts[i] >= nums[idx]:
+                parts[i] -= nums[idx]
+                # here we will subtract current number at idx index, one by one with different parts
+                if self.dfs(parts, nums, idx+1):
+                    return True
+                 # before running next part we are resetting parts array, because we make recursion call for next
+                 # item in part and we want to perform it in original parts array otherwise we will loose some permutations
+                 # check above recursion tree and you will understand
+                parts[i] += nums[idx]
+
+k=3
+nums = [1,5,4,2,3]
+parts = [sum(nums)/k]*k
+self.dfs(parts, nums, 0)
+
+# ####there are more different apporaaches to solve different problems, so checkout ds algo folder for that.####

@@ -319,7 +319,7 @@ if __name__ == '__main__':
 # by locks. but When there is only one shared structure, you can easily run into issues with blocking and contention.
 # As such structures proliferate, however, the complexity and unexpected interactions multiply,
 # potentially leading to deadlocks, and very likely leading to code that is difficult to maintain and test.
-# The better option is to pass messages using `multiprocessing.Queue` objects.
+# The better option is to pass messages using `multiprocessing.queue` objects.
 # Queues should be used to pass all data between subprocesses.
 # This leads to designs that “chunkify” the data into messages to be passed and handled, so that subprocesses can
 # be more isolated and functional/task oriented.

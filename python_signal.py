@@ -1,4 +1,4 @@
-# python signals are used to provide custom functions for OS events. its like event based programming.
+ # python signals are used to provide custom functions for OS events. its like event based programming.
 # there are 2 libraries for signal 1. signal (inbuilt) & 2. blinker
 
 # # example:

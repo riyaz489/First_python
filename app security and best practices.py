@@ -75,7 +75,7 @@
 # example of timing attack is `ssh based timing attack`. to avoid timing attack use `secrets.compare_digest`
 # which is intorduced in python 3.5,  to compare secrets and passwords.
 
-# 21. Use a service like PyUp.io to check for dependencies packages updates, it raise pull/merge requests to your
+# 21. Use a service like PyUpio to check for dependencies packages updates, it raise pull/merge requests to your
 # application and run your tests to keep the packages up to date.
 
 # 22. Use virtual environments for all applications, so that we can manage dependencies project wise very easily,
@@ -207,3 +207,23 @@
 # 43. set encryption mechanism for PII information. so before storing PII info in db or logs we need to encrypt it.
 # for that we can use AES for data encryption and RSA(as rsa is slow) for key encryption, and we
 # need some key management in place also, to rotate and store keys separately.
+# To increase speed we can simply mask PII info in logs with *** or ###, instead of encryption.
+# like in jenkins, whenever we pass any secret we first wrap in masking utility object. so that when we use that
+# secret we get its original value, but while printing we will get masked data.
+# 44. Use tox as it is combination of virtualenv+ pyvenv (to manage different python version virtual env)
+# 45. According to pip standards now setup.py and setup.cfg is not standard anymore. now pyproject.toml is common place
+# where we define all the project build related config. because pyproject.toml is used by other liner and
+# cicd tools as well.
+#
+# 46. If we don't want to use any cloud service to create kubernetes cluster. and we want to create our own cluster on
+#  on-prem setup then we can use kubeadm tool. difference between kubeadm and minikube is, minikube is only used for
+#  learning and testing purpose because it can provision only one worker node.
+
+
+#### six pillors of zero trust #####
+# Identities – including people, services and IOT components
+# Devices – monitoring and enforcing device health and compliance
+# Apps and APIs – ensuring they have appropriate permissions and secure configurations
+# Data – giving it the necessary attributes and encryption to safeguard it out in the open
+# Infrastructure – hardening against attacks on premises or in the cloud
+# Networks – establishing controls to segment, monitor, analyze and encrypt end-to-end traffic

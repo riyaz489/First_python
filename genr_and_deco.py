@@ -40,7 +40,8 @@ for n in fg:
     print ( n)
 
 #now we can use next on list also by getting its iterable
-# if we use next() directly to list it will throw exception Becoz list can iterable but list not itslef is iterable element which point to next elements , so first we have to get its iterable
+# if we use next() directly to list it will throw exception Becoz list can iterable but list not itslef is iterable
+# element which point to next elements , so first we have to get its iterable
 # so that we can store its current pointer location in that (like it can store what is the next value to be called )
 #creating iterable of list l1(we can point on this elements using differnent iterables)
 iterableList =iter(l1)

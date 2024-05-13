@@ -6,7 +6,7 @@
 # __delete__(self, obj) : This method is called when the attribute is deleted from an object (del obj.attr)
 
 # above are methods and below we are using decorators for creating getters and setter
-# because that is cleaner way.
+# because that is a cleaner way.
 
 """Creating a Descriptor using @property Decorator :
 In this we use the power of property decorators which are a combination of property type method and Python decorators."""
